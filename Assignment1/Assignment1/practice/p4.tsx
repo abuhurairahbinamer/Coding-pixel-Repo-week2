@@ -2,10 +2,16 @@
 import React from 'react';
 import type { UserListProps,User } from '../src/types/types';
 
-import {classify} from '../src/classify/classify';
-
 const UserList: React.FC<UserListProps> = ({ users }) => {
- 
+  const classify = (users: User[]) => {
+  const count = users.length;
+
+  return {
+    empty: count === 0,
+    count,
+    label: `${count} user${count === 1 ? "" : "s"}` // deeper 
+  };
+};
  const info=classify(users);
   if (info.empty) {
     return <p className="empty-state-text">No users found</p>;
