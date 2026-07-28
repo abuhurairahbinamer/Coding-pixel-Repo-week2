@@ -21,7 +21,7 @@ import type { StatCardProps } from '../src/types/types';
       <p className="stat-title">{title}</p>
       <p className="stat-value">{value}</p>
       <p className="stat-value-p5task">P5 task : {usersCount}</p>
-      <p className="stat-value-p5task">P4 task Deeper : {usersCountDeep}</p>
+      <p className="stat-value-p5task">P5 task Deeper : {usersCountDeep}</p>
       
 
     </div>
