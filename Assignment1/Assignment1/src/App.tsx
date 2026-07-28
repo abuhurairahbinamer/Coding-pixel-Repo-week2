@@ -5,8 +5,8 @@ import Avatar from './components/Avatar';
 import Badge from './components/Badge';
 import StatCard from './components/StatCard';
 import UserList from './components/UserList';
-
-const INITIAL_USERS: User[] = [
+import ProfileCard from './components/profileCard';
+export const INITIAL_USERS: User[] = [
   { id: 1, name: "Ali",role:"admin" },
   { id: 2, name: "Ahmed",role:"member" },
   { id: 3, name: "Hassan",role:"admin" }
@@ -51,6 +51,9 @@ const App: React.FC = () => {
 
         <UserList users={users} />
       </main>
+      <div>
+<ProfileCard/>
+      </div>
     </div>
   );
 };
