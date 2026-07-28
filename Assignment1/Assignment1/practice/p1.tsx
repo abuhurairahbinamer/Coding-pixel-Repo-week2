@@ -1,6 +1,6 @@
 // P1 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
 import React from 'react';
-import type { AvatarProps } from '../types/types';
+import type { AvatarProps } from '../src/types/types';
 
  const Avatar: React.FC<AvatarProps> = ({ name, imageUrl }) =>{
    const initials = (name: string): string => {
