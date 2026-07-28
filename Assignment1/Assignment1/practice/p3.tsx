@@ -1,6 +1,6 @@
-// P1 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
+// P3 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
 import React from 'react';
-import type { UserListProps,User } from '../types/types';
+import type { UserListProps,User } from '../src/types/types';
 
 const UserList: React.FC<UserListProps> = ({ users }) => {
   if (users.length === 0) {
