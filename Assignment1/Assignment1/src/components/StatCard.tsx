@@ -4,6 +4,7 @@ import { format,formatWithDeeper } from '../classify/format';
  const StatCard: React.FC<StatCardProps> = ({ title, value }) => {
   const usersCountDeep=formatWithDeeper(8000);
   const usersCount=format(1234566);
+  console.log("p5 task check format(0)==='0'",format(0)==='0');
   return(
   <div className="stat-card">
     <div>
