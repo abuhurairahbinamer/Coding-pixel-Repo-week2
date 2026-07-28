@@ -1,7 +1,8 @@
+// P4 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
 import React from 'react';
-import type { UserListProps,User } from '../types/types';
+import type { UserListProps,User } from '../src/types/types';
 
-import {classify} from '../classify/classify';
+import {classify} from '../src/classify/classify';
 
 const UserList: React.FC<UserListProps> = ({ users }) => {
  
@@ -20,11 +21,11 @@ console.log("p4 task check label :",classify([{id:1,name:"ahmed"}]).label)
 
 
 const originalKeys = users.map(user => keyFor(user));
-console.log("P3 task Original keys:", originalKeys);
+
 
 const reversedUsers = [...users].reverse();
 const reversedKeys = reversedUsers.map(user => keyFor(user));
-console.log("P3 task Reversed keys:", reversedKeys);
+
 
   const processedUsers = users.map((user) => {
     const isFirstUser = user.id === 1;
