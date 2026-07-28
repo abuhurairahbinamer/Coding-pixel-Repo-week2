@@ -10,6 +10,14 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
   return `${user.id}-${user.name}`;
 };
 
+
+const originalKeys = users.map(user => keyFor(user));
+console.log("P3 task Original keys:", originalKeys);
+
+const reversedUsers = [...users].reverse();
+const reversedKeys = reversedUsers.map(user => keyFor(user));
+console.log("P3 task Reversed keys:", reversedKeys);
+
   const processedUsers = users.map((user) => {
     const isFirstUser = user.id === 1;
     const initialStyleClass = isFirstUser ? 'initial-ali' : 'initial-ahmed';
