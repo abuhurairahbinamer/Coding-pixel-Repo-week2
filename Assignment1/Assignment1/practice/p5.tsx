@@ -1,7 +1,18 @@
+// P5 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
+
 import React from 'react';
-import type { StatCardProps } from '../types/types';
-import { format,formatWithDeeper } from '../classify/format';
+import type { StatCardProps } from '../src/types/types';
+
+
  const StatCard: React.FC<StatCardProps> = ({ title, value }) => {
+   const format=(n: number): string=> {
+  return n.toLocaleString();
+}
+//deeper
+ const formatWithDeeper=(n: number): string=>{
+  if (n > 999) return "999+";
+  return n.toLocaleString();
+}  
   const usersCountDeep=formatWithDeeper(8000);
   const usersCount=format(1234566);
   return(
