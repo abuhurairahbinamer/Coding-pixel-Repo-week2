@@ -1,18 +1,25 @@
+// P6 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
 import React from 'react';
-import type { UserListProps,User } from '../types/types';
-import { groupBy } from '../classify/groupby';
-import {classify} from '../classify/classify';
+import type { UserListProps,User } from '../src/types/types';
+import { groupBy } from '../src/classify/groupby';
 
 const UserList: React.FC<UserListProps> = ({ users }) => {
  
- const info=classify(users);
-  if (info.empty) {
+  if (users.length===0) {
     return <p className="empty-state-text">No users found</p>;
   }
-
-console.log("p4 task check is empty :",classify([]).empty);
-console.log("p4 task  check count :",classify([{id:1,name:"ahmed",role:"admin"}]).count);
-console.log("p4 task check label :",classify([{id:1,name:"ahmed",role:"member"}]).label);
+//P6 task done deeper
+ const groupBy=<T, K extends string | number>(
+  arr: T[],
+  keyFn: (item: T) => K
+): Record<K, T[]>=> {
+  return arr.reduce((acc, item) => {
+    const key = keyFn(item);
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {} as Record<K, T[]>);
+}
 
    const keyFor = (user: User): string => {
   return `${user.id}-${user.name}`;
@@ -23,12 +30,6 @@ const P6result=groupBy(users,o=>o.role);
 console.log("p6 task",P6result.admin.length===2);
 
 
-const originalKeys = users.map(user => keyFor(user));
-console.log("P3 task Original keys:", originalKeys);
-
-const reversedUsers = [...users].reverse();
-const reversedKeys = reversedUsers.map(user => keyFor(user));
-console.log("P3 task Reversed keys:", reversedKeys);
 
   const processedUsers = users.map((user) => {
     const isFirstUser = user.id === 1;
