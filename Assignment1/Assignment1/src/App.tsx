@@ -52,7 +52,7 @@ const App: React.FC = () => {
         <UserList users={users} />
       </main>
       <div>
-<ProfileCard/>
+     <ProfileCard/>
       </div>
     </div>
   );

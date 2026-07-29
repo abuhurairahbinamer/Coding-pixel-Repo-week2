@@ -1,8 +1,8 @@
 import React from 'react';
-import type { UserListProps,User } from '../types/types';
-import { groupBy } from '../classify/groupby';
-import {classify} from '../classify/classify';
-import { List } from './ListCom';
+import type { UserListProps,User } from '../src/types/types';
+import { groupBy } from '../src/classify/groupby';
+import {classify} from '../src/classify/classify';
+import { List } from '../src/components/ListCom';
 const UserList: React.FC<UserListProps> = ({ users }) => {
  
  const info=classify(users);
@@ -10,25 +10,12 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
     return <p className="empty-state-text">No users found</p>;
   }
 
-console.log("p4 task check is empty :",classify([]).empty);
-console.log("p4 task  check count :",classify([{id:1,name:"ahmed",role:"admin"}]).count);
-console.log("p4 task check label :",classify([{id:1,name:"ahmed",role:"member"}]).label);
 
    const keyFor = (user: User): string => {
   return `${user.id}-${user.name}`;
 };
 
-const P6result=groupBy(users,o=>o.role);
-// const P6result=groupBy(users,o=>o.name);
-console.log("p6 task",P6result.admin.length===2);
 
-
-const originalKeys = users.map(user => keyFor(user));
-console.log("P3 task Original keys:", originalKeys);
-
-const reversedUsers = [...users].reverse();
-const reversedKeys = reversedUsers.map(user => keyFor(user));
-console.log("P3 task Reversed keys:", reversedKeys);
 
   const processedUsers = users.map((user) => {
     const isFirstUser = user.id === 1;
@@ -44,7 +31,8 @@ console.log("P3 task Reversed keys:", reversedKeys);
   });
 
 
-// const generateKey=(user:User,idx:number)=>user.id?user.id.toString():`${user.name}-${user.role}-${idx}`
+
+//deeper
 const generateKey = <
   T extends { id: number; name: string; role: string }
 >(
@@ -74,16 +62,7 @@ const generateKey = <
    <div>
   <h3>Grouped by Role P6 task</h3>
 
-  {Object.entries(P6result).map(([role, users]) => (
-    <div key={role}>
-      <h4>{role}</h4>
-      <ul>
-        {users.map((u) => (
-          <li key={u.id}>{u.name}</li>
-        ))}
-      </ul>
-    </div>
-  ))}
+
 </div>
 <div>
 <div>P8 task</div>
