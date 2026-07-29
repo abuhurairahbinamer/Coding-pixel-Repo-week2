@@ -1,3 +1,5 @@
+// P8 functionality is applied in Assignment1 project,the purpose of creating the practice file is jsut for sake of conveience
+
 import React from 'react';
 import type { UserListProps,User } from '../src/types/types';
 import { groupBy } from '../src/classify/groupby';
