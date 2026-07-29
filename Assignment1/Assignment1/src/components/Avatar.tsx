@@ -26,6 +26,12 @@ console.log("P1 task sample result for Abu Hurairah:",UpdatedName);
     </div>
     <h2 className="user-name">{UpdatedName}</h2>
     <p className="user-role">Administrator</p>
+   <div>
+    <p>Task P1</p>
+    <div>Result for Abu Hurairah is :{UpdatedName}</div>
+    <div>Result for cher is : {sample}</div>
+   </div>
+
   </div>
 );
 }

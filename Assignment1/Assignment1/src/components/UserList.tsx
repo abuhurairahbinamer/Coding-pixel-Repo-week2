@@ -13,6 +13,9 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
 console.log("p4 task check is empty :",classify([]).empty);
 console.log("p4 task  check count :",classify([{id:1,name:"ahmed",role:"admin"}]).count);
 console.log("p4 task check label :",classify([{id:1,name:"ahmed",role:"member"}]).label);
+const check=Number(classify([]).empty===true);
+const check1=classify([{id:1,name:"ahmed",role:"admin"}]).count;
+const check2=classify([{id:1,name:"ahmed",role:"admin"}]).label;
 
    const keyFor = (user: User): string => {
   return `${user.id}-${user.name}`;
@@ -70,6 +73,28 @@ const generateKey = <
         );
       })}
 
+    </div>
+    <div>
+     <p>Task P3</p>
+     <p>
+      <div>Original Keys</div>
+     {originalKeys.map((key)=>(
+      <p key={key}>{key}</p>
+     ))}
+     </p>
+      <p>
+      <div>Reversed Keys</div>
+     {reversedKeys.map((key)=>(
+      <p key={key}>{key}</p>
+     ))}
+     </p>
+    </div>
+    <div>
+      <p>Task P4</p>
+      <p>result for classify([]).empty===true is: {check}</p>
+      <p>{`result for classify([{id:1,name:"ahmed",role:"admin"}]).count) is:`} {check1}</p>
+      <p>{`result for classify([{id:1,name:"ahmed",role:"admin"}]).label) is:`} {check2}</p>
+      
     </div>
    <div>
   <h3>Grouped by Role P6 task</h3>
