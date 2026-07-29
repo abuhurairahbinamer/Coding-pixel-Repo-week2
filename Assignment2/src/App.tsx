@@ -3,6 +3,7 @@ import type { Task, Filter } from './types/types';
 import TaskInput from './component/TaskInput';
 import TaskList from './component/TaskList';
 import FilterBar from './component/FilterBar';
+import {removeAt} from '../practice/P3'
 import './App.css';
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
 
   //  Delete
   const deleteTask = (id: string) => {
-    setTasks(prev => prev.filter(t => t.id !== id));
+    setTasks(pre=>removeAt(pre,id));
   };
 
   //  Filtered tasks
