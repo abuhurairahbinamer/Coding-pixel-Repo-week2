@@ -4,4 +4,4 @@ export function removeAt(tasks:Task[], id:string) {
   //deeper
   return filtered.length === tasks.length ? tasks : filtered;
 }
-//we will not create new array if the id is not found as new array will cause react to re-render.we will return same array.
+//we will not return new array if the id is not found as new array will cause react to re-render.we will return same array.
