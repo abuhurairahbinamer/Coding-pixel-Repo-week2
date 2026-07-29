@@ -18,8 +18,8 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
   }
 
 console.log("p4 task check is empty :",classify([]).empty)
-console.log("p4 task  check count :",classify([{id:1,name:"ahmed"}]).count)
-console.log("p4 task check label :",classify([{id:1,name:"ahmed"}]).label)
+console.log("p4 task  check count :",classify([{id:1,name:"ahmed",role:"admin"}]).count)
+console.log("p4 task check label :",classify([{id:1,name:"ahmed",role:"member"}]).label)
 
    const keyFor = (user: User): string => {
   return `${user.id}-${user.name}`;
