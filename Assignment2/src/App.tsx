@@ -6,6 +6,7 @@ import FilterBar from './component/FilterBar';
 import {removeAt} from '../practice/P3'
 import {visible} from '../practice/p4'
 import { preds } from '../practice/p4';
+import {counts} from '../practice/p5'
 import './App.css';
 
 function App() {
@@ -38,15 +39,19 @@ function App() {
 
   //  Delete
   const deleteTask = (id: string) => {
+    // p3 with deeper
     setTasks(pre=>removeAt(pre,id));
   };
 
   //  Filtered tasks
+  //p4 with deeper
   const filteredTasks = visible(tasks,filter,preds)
 
-  //  Counts
-  const total = tasks.length;
-  const completed = tasks.filter(t => t.completed).length;
+  //  Counts 
+  // p5 with deeper
+  const countResult=counts(tasks);
+  const total = countResult.total;
+  const completed = countResult.completed;
   const active = total - completed;
 
   return (
