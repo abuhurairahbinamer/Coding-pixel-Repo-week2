@@ -4,6 +4,8 @@ import TaskInput from './component/TaskInput';
 import TaskList from './component/TaskList';
 import FilterBar from './component/FilterBar';
 import {removeAt} from '../practice/P3'
+import {visible} from '../practice/p4'
+import { preds } from '../practice/p4';
 import './App.css';
 
 function App() {
@@ -40,11 +42,7 @@ function App() {
   };
 
   //  Filtered tasks
-  const filteredTasks = tasks.filter(t => {
-    if (filter === 'active') return !t.completed;
-    if (filter === 'completed') return t.completed;
-    return true;
-  });
+  const filteredTasks = visible(tasks,filter,preds)
 
   //  Counts
   const total = tasks.length;
