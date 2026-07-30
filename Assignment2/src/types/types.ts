@@ -13,3 +13,11 @@ export type editData={
   id:string;
   editMode:editFilter;
 }
+
+
+
+export type Action =
+  | { type: "add"; payload: { title: string } }
+  | { type: "toggle"; payload: { id: string } }
+  | { type: "delete"; payload: { id: string } }
+  | { type: "edit"; payload: { id: string,next: string} };

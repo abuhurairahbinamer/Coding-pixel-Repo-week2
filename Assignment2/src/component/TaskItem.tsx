@@ -6,7 +6,7 @@ type Props = {
   editRequest:(f: (pre: editData) => editData) => void;
 };
 
-export default function TaskItem({ task, onToggle, onDelete,editRequest }: Props) {
+export default function TaskItem({ task, onToggle, onDelete,editRequest}: Props) {
   // Pre-compute values
   const itemClass = `task-item ${task.completed ? 'completed' : ''}`;
   const checkmark = task.completed ? <span className="checkmark">✓</span> : null;

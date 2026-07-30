@@ -1,55 +1,69 @@
 // import { useState } from 'react';
-import type { Task, Filter,editData } from './types/types';
+import type { Task, Filter,editData,Action } from './types/types';
 import TaskInput from './component/TaskInput';
 import TaskList from './component/TaskList';
 import FilterBar from './component/FilterBar';
-import {removeAt} from '../practice/P3';
 import {visible} from '../practice/p4';
 import { preds } from '../practice/p4';
 import {counts} from '../practice/p5';
 import {useLocalStorage} from '../practice/p8';
 import './App.css';
-
+import {taskReducer} from '../practice/p9'
 function App() {
   // const [tasks, setTasks] = useState<Task[]>([]);
   // const [filter, setFilter] = useState<Filter >('all');
   // const [callback,setCallBack]=useState<string>("")
   // const [edit,setEdit]=useState<editData>({id:"",editMode:false})
   const [tasks, setTasks] = useLocalStorage<Task[]>("tasks",[]);
+  // const [tasks, dispatch] = useReducer(taskReducer, []);
   const [filter, setFilter] = useLocalStorage<Filter >("filter",'all');
   const [callback,setCallBack]=useLocalStorage<string>("callback","");
   const [edit,setEdit]=useLocalStorage<editData>("edit",{id:"",editMode:false})
   const editMode=edit.editMode
+   const dispatch = (action: Action) => {
+    setTasks(prevTasks => taskReducer(prevTasks, action));
+  };
   //  Add task
   const addTask = (title: string) => {
     const trimmed = title.trim();
     if (!trimmed) return;
 
-    const newTask: Task = {
-      id: crypto.randomUUID(),
-      title: trimmed,
-      completed: false,
-      createdAt: Date.now(),
-    };
+    // const newTask: Task = {
+    //   id: crypto.randomUUID(),
+    //   title: trimmed,
+    //   completed: false,
+    //   createdAt: Date.now(),
+    // };
 
-    setTasks(prev => [...prev, newTask]);
+    // setTasks(prev => [...prev, newTask]);
+     dispatch({
+    type: 'add',
+    payload: { title: trimmed }
+  });
   };
 
 
 
   //  Toggle
   const toggleTask = (id: string) => {
-    setTasks(prev =>
-      prev.map(t =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      )
-    );
+    // setTasks(prev =>
+    //   prev.map(t =>
+    //     t.id === id ? { ...t, completed: !t.completed } : t
+    //   )
+    // );
+    dispatch({
+      type: 'toggle',
+    payload: { id: id }
+    })
   };
 
   //  Delete
   const deleteTask = (id: string) => {
-    // p3 with deeper
-    setTasks(pre=>removeAt(pre,id));
+   
+    dispatch({
+      type: 'delete',
+    payload: { id: id }
+    })
   };
 
   //  Filtered tasks
@@ -89,6 +103,7 @@ function App() {
         edit={edit}
         setTasks={setTasks}
         callback={callback}
+        dispatch={dispatch}
       />
 
     </div>

@@ -1,6 +1,6 @@
-import type { Task,editData } from '../types/types';
+import type { Action, Task,editData } from '../types/types';
 import TaskItem from './TaskItem';
-import  {editTitle} from '../../practice/p6'
+
 type Props = {
   tasks: Task[];
   onToggle: (id: string) => void;
@@ -8,15 +8,20 @@ type Props = {
   showEditScreen:(f: (pre: editData) => editData) => void;
   edit:editData;
   setTasks:(f: Task[]) => void;
-  callback:string
+  callback:string;
+  dispatch:(f:Action)=>void;
 };
 
-export default function TaskList({ tasks, onToggle, onDelete, showEditScreen ,edit,setTasks,callback}: Props) {
+export default function TaskList({ tasks, onToggle, onDelete, showEditScreen ,edit,callback,dispatch}: Props) {
   const isEmpty = tasks.length === 0;
 const handleCancelEdit=()=>showEditScreen(pre=>({...pre,editMode:false}))
 const handleEditsave=()=>{
-    const result=editTitle(tasks,edit.id,callback);
-    setTasks(result);
+    // const result=editTitle(tasks,edit.id,callback);
+    dispatch({
+        type:"edit",
+        payload:{id:edit.id,next: callback}
+    })
+    // setTasks(result);
     handleCancelEdit();
 }
   const taskItems = tasks.map(task => (
@@ -26,7 +31,7 @@ const handleEditsave=()=>{
       onToggle={onToggle}
       onDelete={onDelete}
       editRequest={showEditScreen}
-
+    
     />
   ));
 if(edit.editMode){
