@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Task, Filter } from './types/types';
+import type { Task, Filter,editData } from './types/types';
 import TaskInput from './component/TaskInput';
 import TaskList from './component/TaskList';
 import FilterBar from './component/FilterBar';
@@ -11,8 +11,10 @@ import './App.css';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<Filter>('all');
-
+  const [filter, setFilter] = useState<Filter >('all');
+  const [callback,setCallBack]=useState<string>("")
+  const [edit,setEdit]=useState<editData>({id:"",editMode:false})
+  const editMode=edit.editMode
   //  Add task
   const addTask = (title: string) => {
     const trimmed = title.trim();
@@ -27,6 +29,8 @@ function App() {
 
     setTasks(prev => [...prev, newTask]);
   };
+
+
 
   //  Toggle
   const toggleTask = (id: string) => {
@@ -61,7 +65,7 @@ function App() {
         <p>Stay organized and boost your productivity</p>
       </header>
 
-      <TaskInput onAdd={addTask} />
+      <TaskInput onAdd={addTask} edit={edit} setEdit={setEdit} tasks={tasks} callBack={setCallBack} />
 
       <FilterBar
         filter={filter}
@@ -69,12 +73,17 @@ function App() {
         total={total}
         active={active}
         completed={completed}
+        edit={editMode}
       />
 
       <TaskList
         tasks={filteredTasks}
         onToggle={toggleTask}
         onDelete={deleteTask}
+        showEditScreen={setEdit}
+        edit={edit}
+        setTasks={setTasks}
+        callback={callback}
       />
 
     </div>

@@ -1,4 +1,4 @@
-import type { Filter } from '../types/types';
+import type { Filter,editFilter } from '../types/types';
 
 type Props = {
   filter: Filter;
@@ -6,6 +6,7 @@ type Props = {
   total: number;
   active: number;
   completed: number;
+  edit:editFilter
 };
 
 export default function FilterBar({
@@ -14,12 +15,13 @@ export default function FilterBar({
   total,
   active,
   completed,
+  edit
 }: Props) {
   // Pre-compute class names
   const allBtnClass = `filter-btn ${filter === 'all' ? 'active' : ''}`;
   const activeBtnClass = `filter-btn ${filter === 'active' ? 'active' : ''}`;
   const completedBtnClass = `filter-btn ${filter === 'completed' ? 'active' : ''}`;
-
+  const mode=edit?"edit mode":filter
   // Click handlers
   const handleAllClick = () => setFilter('all');
   const handleActiveClick = () => setFilter('active');
@@ -42,7 +44,7 @@ export default function FilterBar({
       </div>
 
       <div className="filter-status-indicator">
-        Showing: <span>{filter}</span>
+        Showing: <span>{mode}</span>
       </div>
     </div>
   );
