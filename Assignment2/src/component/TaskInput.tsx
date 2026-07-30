@@ -1,5 +1,6 @@
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 import type { editData,Task } from '../types/types';
+import { useLocalStorage } from '../../practice/p8';
 type Props = {
   onAdd: (title: string) => void;
   edit:editData;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 export default function TaskInput({ onAdd ,edit,tasks,setEdit,callBack}: Props) {
-  const [text, setText] = useState('');
+  const [text, setText] = useLocalStorage("text",'');
   const editMode=edit.editMode
   useEffect(()=>{
   if(edit.editMode){

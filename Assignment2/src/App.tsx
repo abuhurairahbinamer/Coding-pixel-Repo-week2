@@ -1,19 +1,24 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import type { Task, Filter,editData } from './types/types';
 import TaskInput from './component/TaskInput';
 import TaskList from './component/TaskList';
 import FilterBar from './component/FilterBar';
-import {removeAt} from '../practice/P3'
-import {visible} from '../practice/p4'
+import {removeAt} from '../practice/P3';
+import {visible} from '../practice/p4';
 import { preds } from '../practice/p4';
-import {counts} from '../practice/p5'
+import {counts} from '../practice/p5';
+import {useLocalStorage} from '../practice/p8';
 import './App.css';
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<Filter >('all');
-  const [callback,setCallBack]=useState<string>("")
-  const [edit,setEdit]=useState<editData>({id:"",editMode:false})
+  // const [tasks, setTasks] = useState<Task[]>([]);
+  // const [filter, setFilter] = useState<Filter >('all');
+  // const [callback,setCallBack]=useState<string>("")
+  // const [edit,setEdit]=useState<editData>({id:"",editMode:false})
+  const [tasks, setTasks] = useLocalStorage<Task[]>("tasks",[]);
+  const [filter, setFilter] = useLocalStorage<Filter >("filter",'all');
+  const [callback,setCallBack]=useLocalStorage<string>("callback","");
+  const [edit,setEdit]=useLocalStorage<editData>("edit",{id:"",editMode:false})
   const editMode=edit.editMode
   //  Add task
   const addTask = (title: string) => {
