@@ -1,5 +1,7 @@
+// p7.task is laready implemented in TaskInput Component.The purpose of creating the practice file is for convenience
+
 import { useState,useEffect } from 'react';
-import type { editData,Task } from '../types/types';
+import type { editData,Task } from '../src/types/types';
 type Props = {
   onAdd: (title: string) => void;
   edit:editData;
@@ -32,6 +34,7 @@ if(Title){
   const handleAdd = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     const trimmed = text.trim();
+    //deeper
     if (!trimmed) return; //  reject empty
     onAdd(trimmed);
     setText(''); // clear only if valid
@@ -58,5 +61,4 @@ if(Title){
   );
 }
 
-
-// p7 task.An uncontrolled input stores its own value inside the browser DOM rather than React state, so React cannot programmatically clear, reset, or prevent the input box from keeping invalid whitespace without directly manipulating DOM refs.
+//An uncontrolled input stores its own value inside the browser DOM rather than React state, so React cannot programmatically clear, reset, or prevent the input box from keeping invalid whitespace without directly manipulating DOM refs.
