@@ -1,6 +1,8 @@
 import type { Action, Task,editData } from '../types/types';
 import TaskItem from './TaskItem';
 import { useLocalStorage } from '../../practiceForAssignment2/p8';
+import { useEffect } from 'react';
+import {titleSummary} from '../../PracitceForAssignment3/p6'
 type Props = {
   tasks: Task[];
   onToggle: (id: string) => void;
@@ -13,17 +15,22 @@ type Props = {
 };
 
 export default function TaskList({ tasks, onToggle, onDelete, showEditScreen ,edit,callback,dispatch}: Props) {
+ // deeper part of P6 task
+  useEffect(() => {
+  document.title = titleSummary(tasks);
+}, [tasks]);
+ // deeper part of P6 task
   const isEmpty = tasks.length === 0;
 
     const [sortBy, setSortBy] = useLocalStorage<"createdAt" | "priority">("sortBy","createdAt");
 const handleCancelEdit=()=>showEditScreen(pre=>({...pre,editMode:false}))
 const handleEditsave=()=>{
-    // const result=editTitle(tasks,edit.id,callback);
+    
     dispatch({
         type:"edit",
         payload:{id:edit.id,next: callback}
     })
-    // setTasks(result);
+    
     handleCancelEdit();
 }
 
@@ -33,13 +40,7 @@ const handleEditsave=()=>{
   }
   return b.createdAt - a.createdAt; // newest first
 }):[]
-const isAppTitle=tasks.length!==0?tasks.length:0;
-if(isAppTitle){
-  document.title="Count : "+isAppTitle.toString();
-}
-else{
-   document.title="assignment3";
-}
+
   const taskItems = sortedTasks.map(task => (
     <TaskItem
       key={task.id}
