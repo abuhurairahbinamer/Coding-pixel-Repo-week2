@@ -31,6 +31,7 @@ if(isEditing){
   const checkmark = !isEditing?task.completed ?  <div onClick={handleToggle} className="checkbox-custom"><span className="checkmark">✓</span></div> :!task.completed?<div onClick={handleToggle} className="checkbox-custom"></div>: null:null;
   const handleEditSave=()=>{
       if (editText.trim() === "") {
+        setIsEditing(false);
         return;
       }
     dispatch({type:"edit",payload:{id:task.id,next:editText}})
@@ -40,7 +41,8 @@ if(isEditing){
 
   const handleDelete = () => onDelete(task.id);
   const handleCancelEdit = () => {
-  setEditText(task.title); // reset back
+    //deeper part of p4 task
+  setEditText(task.title); 
   setIsEditing(false);
 };
   // const handleEditRequest=()=>editRequest((pre)=>({...pre,editMode:true,id:task.id}))
