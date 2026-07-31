@@ -32,6 +32,6 @@ export function visible<T, K extends string>(
 }
 
  
-console.log("P4 task without deeper",visibleWithoutDeeper([{completed:true},{completed:false}] as Task[], 'active').length === 1)
-console.log("P4 task with deeper",visible([{completed:true},{completed:false}] as Task[], 'active',preds).length === 1)  
+// console.log("P4 task without deeper",visibleWithoutDeeper([{completed:true},{completed:false}] as Task[], 'active').length === 1)
+// console.log("P4 task with deeper",visible([{completed:true},{completed:false}] as Task[], 'active',preds).length === 1)  
 // console.log(preds.all())

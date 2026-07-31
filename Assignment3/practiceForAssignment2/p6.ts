@@ -23,5 +23,5 @@ export function editTitle(
   return changed ? newTasks : tasks;
 }
 
-console.log("p6 task chaeck with deeper",editTitle([{title:"a1",id:"1"},{title:"a1",id:"2"},{title:"a3",id:"3"}] as Task[],'1'," "))
-console.log("p6 task chaeck with deeper",editTitle([{title:"a1",id:"1"},{title:"a1",id:"2"},{title:"a3",id:"3"}] as Task[],'1',"next"))
+// console.log("p6 task chaeck with deeper",editTitle([{title:"a1",id:"1"},{title:"a1",id:"2"},{title:"a3",id:"3"}] as Task[],'1'," "))
+// console.log("p6 task chaeck with deeper",editTitle([{title:"a1",id:"1"},{title:"a1",id:"2"},{title:"a3",id:"3"}] as Task[],'1',"next"))
