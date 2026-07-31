@@ -1,7 +1,8 @@
 import type { Task,Action } from "../src/types/types";
 // import { editTitle } from "./p6";
 import { removeAt } from "./P3";
-import {commitEdit} from '../PracitceForAssignment3/p4'
+import {commitEdit} from '../PracitceForAssignment3/p4';
+import {clearCompleted} from '../PracitceForAssignment3/p5'
 export function taskReducer(state: Task[], action: Action): Task[] {
   if (action.type === "add") {
     return [
@@ -43,7 +44,8 @@ export function taskReducer(state: Task[], action: Action): Task[] {
   } 
   
   else if (action.type === "clear_completed") {
-    return state.filter(task => !task.completed);
+    // return state.filter(task => !task.completed);
+    return clearCompleted(state)
   } 
   
   else {
