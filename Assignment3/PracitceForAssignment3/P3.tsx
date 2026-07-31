@@ -1,11 +1,11 @@
-import type { Task,Action } from '../types/types';
-import { useLocalStorage } from '../../practiceForAssignment2/p8';
+//p3 task is already implemented in TaskItem.tsx the purpose of creating the file is just for the sake of convenience
+import type { Task,Action } from '../src/types/types';
+import { useLocalStorage } from '../practiceForAssignment2/p8';
 type Props = {
   task: Task;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
    dispatch:(f:Action)=>void;
-  // editRequest:(f: (pre: editData) => editData) => void;
 };
 
 export default function TaskItem({ task, onToggle, onDelete,dispatch}: Props) {
@@ -18,7 +18,7 @@ const allowInlineEditing=()=>{
 };
 
 const updateValue=(e:React.ChangeEvent<HTMLInputElement>)=>setEditText(e.target.value);
-  // Pre-compute values
+
     const handleToggle = () => {
 if(isEditing){
   return;
@@ -38,10 +38,10 @@ if(isEditing){
 
   const handleDelete = () => onDelete(task.id);
   const handleCancelEdit = () => {
-  setEditText(task.title); // reset back
+  setEditText(task.title); 
   setIsEditing(false);
 };
-  // const handleEditRequest=()=>editRequest((pre)=>({...pre,editMode:true,id:task.id}))
+ 
   const allowKeyDown=(e:React.KeyboardEvent<HTMLInputElement>)=>{
     if (e.key === "Enter") {
     handleEditSave();
@@ -61,10 +61,13 @@ if(isEditing){
        
         {show}
       </div>
-{/* <button className="edit-btn" onClick={handleEditRequest}>Edit</button> */}
       <button className="delete-btn" onClick={handleDelete}>
         Delete
       </button>
     </li>
   );
 }
+
+
+//deeper 
+//The draft value should live in a separate state (like useState) so it can be either saved (committed) or canceled (discarded).
