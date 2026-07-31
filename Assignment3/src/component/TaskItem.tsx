@@ -15,6 +15,8 @@ const [editText, setEditText] = useLocalStorage("draft",task.title); //same as d
 
 const allowInlineEditing=()=>{
   setIsEditing(true);
+  setEditText(task.title);
+
 };
 
 const updateValue=(e:React.ChangeEvent<HTMLInputElement>)=>setEditText(e.target.value);
