@@ -10,6 +10,7 @@ import {useLocalStorage} from '../practiceForAssignment2/p8';
 import './App.css';
 import '../PracitceForAssignment3/P1'
 import '../PracitceForAssignment3/p7'
+import '../PracitceForAssignment3/p8'
 import {taskReducer} from '../practiceForAssignment2/p9'
 function App() {
   // const [tasks, setTasks] = useState<Task[]>([]);
